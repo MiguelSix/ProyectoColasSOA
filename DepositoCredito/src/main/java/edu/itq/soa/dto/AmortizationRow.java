@@ -2,10 +2,10 @@ package edu.itq.soa.dto;
 
 public record AmortizationRow(
         int paymentNumber,
-        double payment,
-        double principal,
+        double monthlyPayment,
         double interest,
-        double balance) 
-{
-
-}
+        double capital,
+        double extraPayment,
+        double currentBalance,
+        double totalInterest) 
+{}

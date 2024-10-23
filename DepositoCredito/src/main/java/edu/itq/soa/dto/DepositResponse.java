@@ -2,7 +2,7 @@ package edu.itq.soa.dto;
 
 import java.util.List;
 
-public record CreditDepositResponse(
+public record DepositResponse(
         String accountNumber,
         String clientName,
         double accountBalance,

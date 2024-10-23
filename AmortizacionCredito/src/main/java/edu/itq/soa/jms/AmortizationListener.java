@@ -25,7 +25,7 @@ public class AmortizationListener {
     @Autowired
     private AmortizationLogic amortizationLogic;
     
-    @JmsListener(destination = "amortization.request")
+    @JmsListener(destination = "amortization.in")
     public void receive(Message message) {
         try 
         {
@@ -66,11 +66,8 @@ public class AmortizationListener {
             // Enviar a cola de amortization.response
             jmsMessage.setMessage(gson.toJson(response));
             
-            // Manda al historial
-            jmsSender.send("amortization.history", jmsMessage);
-            
             // Manda a la respuesta
-            jmsSender.send("amortization.response", jmsMessage);
+            jmsSender.send("amortization.out", jmsMessage);
             
             
         } 

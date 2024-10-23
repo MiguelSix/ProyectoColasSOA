@@ -22,7 +22,7 @@ public class ValidationListener {
     @Autowired
     private CreditValidationLogic validationLogic;
     
-    @JmsListener(destination = "credit.validation")
+    @JmsListener(destination = "validation.in")
     public void receive(Message message) {
         try 
         {
@@ -41,7 +41,7 @@ public class ValidationListener {
             
             // Enviar a response.validation
             
-            jmsSender.send("response.validation", jmsMessage);
+            jmsSender.send("validation.out", jmsMessage);
             
             System.out.println("Validacion del credito realizada: ");
             System.out.println(response.toString());

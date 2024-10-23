@@ -17,7 +17,7 @@ public class CreditAmortizationTableListener {
     @Autowired
     private JmsSender jmsSender;
     
-    @JmsListener(destination = "amortization.response") //tabla.out
+    @JmsListener(destination = "amortization.out")
     public void receive(Message message) {
         try 
         {
@@ -35,9 +35,9 @@ public class CreditAmortizationTableListener {
             // Mandamos los datos necesarios para el deposito a la cuenta del cliente
             
             System.out.println("AMORTIZATION TABLE FOR CLIENT " + response.clientName());
-            System.out.println(response.amortizationTable());
+            System.out.println(response.toString());
             
-            jmsSender.send("deposit.request", jmsMessage);
+            jmsSender.send("deposit.in", jmsMessage);
             
         }
         catch (Exception e) 

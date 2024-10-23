@@ -13,7 +13,7 @@ public class CreditRequestListener {
     @Autowired
     private JmsSender jmsSender;
     
-    @JmsListener(destination = "credit.request")
+    @JmsListener(destination = "credit.in")
     public void receive(Message message) {
         try 
         {
@@ -25,7 +25,7 @@ public class CreditRequestListener {
             System.out.println(jmsMessage.getMessage());
             
             // Mandar a validar la solicitud de crédito
-            jmsSender.send("credit.validation", jmsMessage);
+            jmsSender.send("validation.in", jmsMessage);
           
         } 
         catch (Exception e) 

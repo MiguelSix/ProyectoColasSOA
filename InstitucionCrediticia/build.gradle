@@ -13,6 +13,12 @@ java {
 	}
 }
 
+configurations {
+	all {
+		//exclude implementation 'org.springframework.boot:spring-boot-starter-logging'
+	}
+}
+
 repositories {
 	mavenCentral()
 }
@@ -20,6 +26,7 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-artemis'
 	implementation 'com.google.code.gson:gson:2.11.0'
+	//implementation 'org.springframework.boot:spring-boot-starter-log4j2'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }

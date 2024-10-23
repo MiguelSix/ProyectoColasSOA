@@ -17,7 +17,7 @@ public class CreditValidationListener {
     @Autowired
     private JmsSender jmsSender;
     
-    @JmsListener(destination = "response.validation")
+    @JmsListener(destination = "validation.out")
     public void receive(Message message) {
         try 
         {
@@ -33,10 +33,10 @@ public class CreditValidationListener {
             // Checar el status de la respuesta
             if (response.approved()) {
                 System.out.println("CREDIT OF CLIENT " + response.clientName() + "HAS BEEN APPROVED");
-                jmsSender.send("amortization.request", jmsMessage);
+                jmsSender.send("amortization.in", jmsMessage);
             } else {
                 System.out.println("CREDIT OF CLIENT " + response.clientName() + "HAS BEEN REJECTED");
-                jmsSender.send("credit.response", jmsMessage);
+                jmsSender.send("credit.out", jmsMessage);
             }
             
         }

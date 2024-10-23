@@ -17,7 +17,7 @@ public class CreditDepositListener {
     @Autowired
     private JmsSender jmsSender;
     
-    @JmsListener(destination = "deposit.response")
+    @JmsListener(destination = "deposit.out")
     public void receive(Message message) {
         try 
         {
@@ -30,7 +30,7 @@ public class CreditDepositListener {
                     CreditDepositResponse.class
             );
             
-            jmsSender.send("credit.response", jmsMessage);
+            jmsSender.send("credit.out", jmsMessage);
             
             System.out.println("Credit Deposit Response: " + response.toString());
             
