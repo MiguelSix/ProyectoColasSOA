@@ -33,6 +33,8 @@ public class DepositLogic {
                 "COMPLETED",
                 "Credit deposited successfully ;D",
                 date,
+                request.getTotalPayment(),
+                request.getTotalInterest(),
                 request.amortizationTable()
         );
         

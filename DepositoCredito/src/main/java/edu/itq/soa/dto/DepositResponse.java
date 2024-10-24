@@ -13,6 +13,8 @@ public record DepositResponse(
         String status,
         String message,
         String transactionDate,
+        double totalPayment,
+        double totalInterest,
         List<AmortizationRow> amortizationTable
     ){
     public double getTotalPayment() {
